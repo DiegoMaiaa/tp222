@@ -5,12 +5,35 @@ app.set('view engine', 'ejs')
 app.get('/', (request, response) => {
     response.render('conta')
 })
-app.get('/tudonofront', (request, response) => {
-    response.render('rayane')
+
+app.get('/index', (request, response) => {
+    
+    var resultado= ''
+    response.render('rayane', {resultado})
+
 })
-app.get('/soma', (request, response) => {
-    result = parseFloat(n1.value) + parseFloat(n2.value);
-            document.getElementById("resultadosoma").innerHTML = result;
+app.post('/soma', (request, response) => {
+
+            resultado= parseFloat(request.body.n1) + parseFloat(request.body.n2)
+            response.render('rayane')
+
+})
+app.post('/subtrair', (request, response) => {
+    
+            resultado= parseFloat(request.body.n1) - parseFloat(request.body.n2)
+            response.render('rayane')
+
+})
+app.post('/multiplicacao', (request, response) => {
+            
+            resultado= parseFloat(request.body.n1) * parseFloat(request.body.n2)
+            response.render('rayane')
+
+})
+app.post('/divisao', (request, response) => {
+        
+            resultado= parseFloat(request.body.n1) / parseFloat(request.body.n2)
+            response.render('rayane')
 
 })
 
